@@ -1,15 +1,10 @@
 name: Tests
 
 on:
-  push:
-    paths:
-      - '.github/workflows/test.yml'
-      - 'prime_backup/**'
-      - 'tests/**'
-
+  workflow_dispatch:
 jobs:
   unit_test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: unit tests
 
     steps:
@@ -29,7 +24,7 @@ jobs:
         run: pytest -s tests/ --ignore=tests/test_fuzzy_run.py
 
   fuzzy_test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       matrix:
         seed: ['0', '1', '2', '3', '4', '5', '6', '7']

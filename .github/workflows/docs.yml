@@ -1,14 +1,12 @@
 # https://squidfunk.github.io/mkdocs-material/publishing-your-site/#with-github-actions
 name: Build docs page
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v6
       - name: Configure Git Credentials
